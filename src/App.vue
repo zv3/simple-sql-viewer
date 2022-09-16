@@ -12,7 +12,7 @@
 
       <div class="flex-auto">
         <div class="my-8">
-          <TabPanel v-model="currentTab" />
+          <TabPanel v-model:tab-id="currentTabId" />
 
           <component :is="mainTabViewComponent" />
         </div>
@@ -31,15 +31,15 @@ import TabViewSaved from './components/TabViewSaved/TabViewSaved.vue';
 import TabViewRecent from './components/TabViewRecent/TabViewRecent.vue';
 import { TAB_VIEW_QUERY, TAB_VIEW_RECENT, TAB_VIEW_SAVED } from './components/TabPanel/types';
 
-const currentTab = ref(TAB_VIEW_QUERY);
+const currentTabId = ref(TAB_VIEW_QUERY.id);
 
 const mainTabViewComponent = computed(() => {
-  switch (currentTab.value) {
-    case TAB_VIEW_SAVED:
+  switch (currentTabId.value) {
+    case TAB_VIEW_SAVED.id:
       return TabViewSaved;
-    case TAB_VIEW_RECENT:
+    case TAB_VIEW_RECENT.id:
       return TabViewRecent;
-    case TAB_VIEW_QUERY:
+    case TAB_VIEW_QUERY.id:
     default:
       return TabViewQuery;
   }

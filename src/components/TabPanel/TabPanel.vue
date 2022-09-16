@@ -26,25 +26,25 @@ import { defineProps } from 'vue';
 import { TAB_VIEW_OPTIONS, TAB_VIEW_QUERY, TabViewOption } from './types';
 
 interface Props {
-  tab?: TabViewOption;
+  tabId?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  tab: () => TAB_VIEW_QUERY,
+  tabId: () => TAB_VIEW_QUERY.id,
 });
 
 interface Emits {
-  (e: 'update:tab', val: TabViewOption): void;
+  (e: 'update:tab-id', val: string): void;
 }
 
 const emits = defineEmits<Emits>();
 
 const onClickButton = (tab: TabViewOption) => {
-  emits('update:tab', tab);
+  emits('update:tab-id', tab.id);
 };
 
 const isTabActive = (tab: TabViewOption) => {
-  return tab.id === props.tab.id;
+  return tab.id === props.tabId;
 };
 </script>
 
