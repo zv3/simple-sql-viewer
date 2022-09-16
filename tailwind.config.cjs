@@ -3,10 +3,17 @@ module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
-      "./src/*.{ts,vue}"
+    "./src/*.{ts,vue}",
   ],
+
+  darkMode: 'class',
+
   theme: {
     extend: {},
   },
-  plugins: [],
+
+  plugins: [
+    require("@tailwindcss/typography"),
+    require('daisyui'),
+  ],
 }
