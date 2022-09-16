@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto">
     <div class="flex">
-      <div class="flex-auto">
+      <div class="flex-0 w-1/5">
         <h2>All tables</h2>
         <ul class="list-none">
           <li v-for="table in tables">
