@@ -1,10 +1,10 @@
 <template>
-  <div class="overflow-x-auto">
-    <table class="table table-compact table-zebra w-full">
-      <thead>
+  <div class="overflow-x-auto relative">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th>#</th>
-          <th scope="col">
+          <th class="py-3 px-6">#</th>
+          <th scope="col" class="py-3 px-6">
             Name
             <button type="button" @click="onClickSortByButton(currentSortDirection)">
               <svg
@@ -20,25 +20,26 @@
               </svg>
             </button>
           </th>
-          <th scope="col">Description</th>
+          <th scope="col" class="py-3 px-6">Description</th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr
           v-for="(query, index) in queries"
+          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
         >
-          <th scope="row">{{ index + 1 }}</th>
-          <td>
+          <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ index + 1 }}</th>
+          <td class="px-6">
             {{ query.name }}
           </td>
-          <td>
+          <td class="px-6">
             {{ query.description }}
           </td>
           <td class="px-6">
             <button
               type="button"
-              class="btn btn-xs btn-outline"
+              class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-3 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               @click="onClickRunButton(query)"
             >
               Run

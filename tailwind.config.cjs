@@ -4,6 +4,7 @@ module.exports = {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
     "./src/*.{ts,vue}",
+    "./node_modules/flowbite/**/*.js"
   ],
 
   darkMode: 'class',
@@ -14,6 +15,6 @@ module.exports = {
 
   plugins: [
     require("@tailwindcss/typography"),
-    require('daisyui'),
+    require('flowbite/plugin'),
   ],
 }

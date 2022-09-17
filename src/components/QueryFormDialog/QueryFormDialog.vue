@@ -1,9 +1,6 @@
 <template>
-  <Dialog :open="isVisible" @close="onClickCancelButton">
-    <template #default>
-      <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-        {{ localModel.id ? 'Edit query' : 'Save query' }}
-      </h3>
+  <Dialog :title="dialogTitle" :open="isVisible" @close="onClickCancelButton">
+    <template #main>
       <form class="space-y-6" action="#">
         <div>
           <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -41,16 +38,18 @@
       </form>
     </template>
 
-    <template #action>
-      <button class="btn btn-ghost btn-sm" @click="onClickCancelButton">Cancel</button>
-      <button class="btn btn-sm" @click="onClickSubmitButton">Submit</button>
+    <template #footer>
+      <div class="ml-auto">
+        <button class="text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:hover:bg-gray-800 dark:focus:ring-gray-700 dark:border-gray-700" @click="onClickCancelButton">Cancel</button>
+        <button class="py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" @click="onClickSubmitButton">Submit</button>
+      </div>
     </template>
   </Dialog>
 </template>
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { ref, watch } from 'vue';
+import {computed, ref, watch} from 'vue';
 import { SavedQuery } from '../../domain/types';
 import Dialog from '../ui/Dialog.vue';
 import { useFormDialogStore } from '../../stores/formDialog';
@@ -72,6 +71,10 @@ const onClickSubmitButton = () => {
 const onClickCancelButton = () => {
   formDialogStore.setVisibility(false);
 };
+
+const dialogTitle = computed(() => {
+  return localModel.value.id ? 'Edit query' : 'Save query'
+});
 
 watch(isVisible, () => {
   localModel.value = { ...queryModel.value };

@@ -1,18 +1,22 @@
 <template>
   <div class="flex items-center mb-1">
     <div class="flex-auto">
-      <nav class="tabs" aria-label="Tabs" role="tablist">
-        <button
-          v-for="tab in TAB_VIEW_OPTIONS"
-          type="button"
-          class="tab"
-          :class="{ 'tab-active': isTabActive(tab) }"
-          role="tab"
-          @click="onClickButton(tab)"
-        >
-          {{ tab.label }}
-        </button>
-      </nav>
+      <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400" aria-label="Tabs" role="tablist">
+        <li class="mr-2">
+          <button
+            v-for="tab in TAB_VIEW_OPTIONS"
+            type="button"
+            class="py-3 px-4 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+            :class="{
+              'text-blue-500 dark:hover:text-blue-500 dark:hover:bg-transparent pointer-events-none': isTabActive(tab),
+            }"
+            role="tab"
+            @click="onClickButton(tab)"
+          >
+            {{ tab.label }}
+          </button>
+        </li>
+      </ul>
     </div>
 
     <div class="flex-0">
