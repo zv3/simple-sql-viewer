@@ -1,9 +1,10 @@
 <template>
-  <div class="overflow-x-auto relative">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+  <div class="overflow-x-auto">
+    <table class="table table-compact table-zebra w-full">
+      <thead>
         <tr>
-          <th scope="col" class="py-3 px-6">
+          <th>#</th>
+          <th scope="col">
             Name
             <button type="button" @click="onClickSortByButton(currentSortDirection)">
               <svg
@@ -19,27 +20,25 @@
               </svg>
             </button>
           </th>
-          <th scope="col" class="py-3 px-6">Description</th>
+          <th scope="col">Description</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr
-          v-for="query in queries"
-          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+          v-for="(query, index) in queries"
         >
-          <th
-            scope="row"
-            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-          >
+          <th scope="row">{{ index + 1 }}</th>
+          <td>
             {{ query.name }}
-          </th>
-          <td class="py-4 px-6">
+          </td>
+          <td>
             {{ query.description }}
           </td>
-          <td class="py-4 px-6">
+          <td class="px-6">
             <button
               type="button"
-              class="py-2 px-3 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              class="btn btn-xs btn-outline"
               @click="onClickRunButton(query)"
             >
               Run
@@ -52,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import sortBy from 'lodash/sortBy';
+import orderBy from 'lodash/orderBy';
 import { useSavedQueriesStore } from '../../stores/SavedQueries';
 import { SavedQuery } from '../../domain/types';
 import { computed, defineEmits, ref } from 'vue';
@@ -78,6 +77,6 @@ const onClickSortByButton = (direction: SortDirection) => {
 };
 
 const queries = computed(() => {
-  return sortBy(store.queries, currentSortDirection);
+  return orderBy(store.queries, 'name', currentSortDirection.value);
 });
 </script>
