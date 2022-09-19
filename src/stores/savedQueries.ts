@@ -2,10 +2,11 @@ import { defineStore } from 'pinia';
 import { v4 as uuid } from 'uuid';
 import { ref } from 'vue';
 import { SavedQuery } from '../domain/types';
+import {PREDEFINED_SAVED_QUERIES} from "../defaults";
 
 export const useSavedQueriesStore = defineStore('queries.saved', () => {
   const rawExistingQueries = window.localStorage.getItem('savedQueries');
-  const savedQueries: SavedQuery[] = rawExistingQueries ? JSON.parse(rawExistingQueries) : [];
+  const savedQueries: SavedQuery[] = rawExistingQueries ? JSON.parse(rawExistingQueries) : PREDEFINED_SAVED_QUERIES;
 
   const queries = ref<SavedQuery[]>([...savedQueries]);
 

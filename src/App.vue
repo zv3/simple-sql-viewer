@@ -9,7 +9,7 @@
         <div class="px-4 mt-2">
           <h2 class="text-gray-500">All tables</h2>
           <ul class="list-none mt-4">
-            <li v-for="table in Tables">
+            <li v-for="table in TABLES">
               <a href="#" class="text-sm text-white bg-gray-800 px-2 py-1.5 rounded" @click="onClickTable(table)">{{ table.name }}</a>
             </li>
           </ul>
@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import Tables from './tables';
+import { TABLES } from './defaults';
 import QueryFormDialog from './components/QueryFormDialog/QueryFormDialog.vue';
 import TabPanel from './components/TabPanel/TabPanel.vue';
 import TabViewQuery from './components/TabViewQuery/TabViewQuery.vue';
