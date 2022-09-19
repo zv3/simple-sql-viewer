@@ -78,6 +78,6 @@ const onClickSortByButton = (direction: SortDirection) => {
 };
 
 const queries = computed(() => {
-  return orderBy(recentQueriesStore.queries, 'sql', currentSortDirection.value);
+  return orderBy(recentQueriesStore.queries, 'lastRanAt', currentSortDirection.value);
 });
 </script>
