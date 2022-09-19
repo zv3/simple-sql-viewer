@@ -81,6 +81,7 @@ const onRun = async (sql: string) => {
 
 const onClickTable = (table: Table) => {
   queryTabStore.setCurrentTable(table);
+  currentTabId.value = TAB_VIEW_QUERY.id;
 
   return runQuery(table.sql);
 }
