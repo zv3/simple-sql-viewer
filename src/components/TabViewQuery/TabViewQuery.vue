@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SqlEditorInput :value="editorContents" @update:value="onInputEditor" />
+    <SqlEditorInput :model-value="editorContents" @update:value="onInputEditor" />
 
     <div class="text-right mt-2">
       <button
