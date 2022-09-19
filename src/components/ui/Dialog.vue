@@ -48,7 +48,7 @@
         </div>
         <div
           v-if="$slots.footer"
-          class="flex items-center p-6 lg:px-8 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600"
+          class="p-6 lg:px-8 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600"
         >
           <slot name="footer"></slot>
         </div>

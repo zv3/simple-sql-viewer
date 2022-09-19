@@ -39,19 +39,30 @@
     </template>
 
     <template #footer>
-      <div class="ml-auto">
-        <button
-          class="text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:hover:bg-gray-800 dark:focus:ring-gray-700 dark:border-gray-700"
-          @click="onClickCancelButton"
-        >
-          Cancel
-        </button>
-        <button
-          class="py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          @click="onClickSubmitButton"
-        >
-          Submit
-        </button>
+      <div class="flex items-center ">
+        <div class="flex-0">
+          <button
+            class="focus:outline-none text-white hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:hover:bg-red-700 dark:focus:ring-red-900"
+            @click="onClickDeleteButton"
+          >
+            Delete
+          </button>
+        </div>
+
+        <div class="ml-auto">
+          <button
+            class="text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:hover:bg-gray-800 dark:focus:ring-gray-700 dark:border-gray-700"
+            @click="onClickCancelButton"
+          >
+            Cancel
+          </button>
+          <button
+            class="py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            @click="onClickSubmitButton"
+          >
+            Submit
+          </button>
+        </div>
       </div>
     </template>
   </Dialog>
@@ -79,6 +90,12 @@ const onClickSubmitButton = () => {
 };
 
 const onClickCancelButton = () => {
+  formDialogStore.setVisibility(false);
+};
+
+const onClickDeleteButton = () => {
+  savedQueriesStore.deleteQueryModel(localModel.value);
+
   formDialogStore.setVisibility(false);
 };
 
