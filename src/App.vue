@@ -51,6 +51,7 @@ const onRun = (sql: string) => {
   currentTabId.value = TAB_VIEW_QUERY.id;
 
   queryTabStore.setEditorContents(sql);
+  queryTabStore.setIsRunning(true);
 };
 </script>
 

@@ -4,7 +4,6 @@
     theme="vs-dark"
     language="sql"
     :options="editorOptions"
-    :width="800"
     :height="100"
     @change="onChange"
   />
