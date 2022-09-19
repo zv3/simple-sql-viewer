@@ -73,7 +73,7 @@ const savedQueriesStore = useSavedQueriesStore();
 const localModel = ref<SavedQuery>({ ...queryModel.value });
 
 const onClickSubmitButton = () => {
-  savedQueriesStore.persistQueryModel(localModel.value);
+  savedQueriesStore.saveQueryModel(localModel.value);
 
   formDialogStore.setVisibility(false);
 };

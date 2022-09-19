@@ -9,6 +9,10 @@ export const useSavedQueriesStore = defineStore('queries.saved', () => {
 
   const queries = ref<SavedQuery[]>([...savedQueries]);
 
+  function persistQueries() {
+    window.localStorage.setItem('savedQueries', JSON.stringify(queries.value));
+  }
+
   function addQueryModel(query: SavedQuery) {
     const hydratedQuery = {
       ...query,
@@ -18,11 +22,13 @@ export const useSavedQueriesStore = defineStore('queries.saved', () => {
 
     queries.value.push(hydratedQuery);
 
-    window.localStorage.setItem('savedQueries', JSON.stringify(queries.value));
+    persistQueries();
   }
 
   function deleteQueryModel(query: SavedQuery) {
     queries.value = queries.value.filter((q) => q.id !== query.id);
+
+    persistQueries();
   }
 
   function updateQueryModel(query: SavedQuery) {
@@ -30,12 +36,14 @@ export const useSavedQueriesStore = defineStore('queries.saved', () => {
 
     if (index !== -1) {
       queries.value.splice(index, 1, query);
+
+      persistQueries();
     }
   }
 
-  function persistQueryModel(query: SavedQuery) {
+  function saveQueryModel(query: SavedQuery) {
     return query.id ? updateQueryModel(query) : addQueryModel(query);
   }
 
-  return { queries, addQuery: addQueryModel, deleteQuery: deleteQueryModel, persistQueryModel };
+  return { queries, deleteQueryModel, saveQueryModel };
 });
