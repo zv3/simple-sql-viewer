@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import { QueryResults } from '../domain/types';
+import {QueryResults, Table} from '../domain/types';
+import Tables from "../tables";
 
 export const useQueryTabStore = defineStore('tab.query', () => {
   const editorContents = ref('');
@@ -9,6 +10,7 @@ export const useQueryTabStore = defineStore('tab.query', () => {
     columns: [],
     rows: [],
   });
+  const table = ref<Table>(Tables[0]);
 
   function setEditorContents(value: string) {
     editorContents.value = value;
@@ -22,6 +24,10 @@ export const useQueryTabStore = defineStore('tab.query', () => {
     queryResults.value = results;
   }
 
+  function setCurrentTable(t: Table) {
+    table.value = t;
+  }
+
   return {
     editorContents,
     isRunning,
@@ -29,5 +35,6 @@ export const useQueryTabStore = defineStore('tab.query', () => {
     setEditorContents,
     setIsRunning,
     setQueryResults,
+    setCurrentTable,
   };
 });

@@ -17,3 +17,9 @@ export interface RecentQuery {
   sql: string;
   lastRanAt: number;
 }
+
+export interface Table {
+  name: string;
+  url: string;
+  sql: string;
+}
