@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import {QueryResults, Table} from '../domain/types';
-import { TABLES } from "../defaults";
+import { QueryResults, Table } from '../domain/types';
+import { TABLES } from '../defaults';
 
 export const useQueryTabStore = defineStore('tab.query', () => {
   const editorContents = ref('');

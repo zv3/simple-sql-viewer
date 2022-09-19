@@ -100,7 +100,7 @@ const onClickDeleteButton = () => {
   formDialogStore.setVisibility(false);
 };
 
-const isNewQuery = computed(() => !localModel.value.id)
+const isNewQuery = computed(() => !localModel.value.id);
 
 const dialogTitle = computed(() => {
   return isNewQuery ? 'Edit query' : 'Save query';

@@ -49,12 +49,14 @@
     </div>
 
     <nav class="flex justify-between items-center pt-4" aria-label="Table navigation">
-        <span class="text-sm font-normal text-gray-500 dark:text-gray-400"
-        >Showing <span class="font-semibold text-gray-900 dark:text-white">{{ pagination.from }}-{{ pagination.to}}</span> of
-          <span class="font-semibold text-gray-900 dark:text-white">{{
-              totalRowsCount
-            }}</span></span
+      <span class="text-sm font-normal text-gray-500 dark:text-gray-400"
+        >Showing
+        <span class="font-semibold text-gray-900 dark:text-white"
+          >{{ pagination.from }}-{{ pagination.to }}</span
         >
+        of
+        <span class="font-semibold text-gray-900 dark:text-white">{{ totalRowsCount }}</span></span
+      >
       <ul class="inline-flex items-center -space-x-px">
         <li>
           <button
@@ -62,7 +64,8 @@
             class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white"
             :class="{
               'dark:hover:bg-gray-700': !isPrevPageButtonDisabled,
-              'dark:bg-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-600 dark:text-gray-600 cursor-not-allowed': isPrevPageButtonDisabled
+              'dark:bg-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-600 dark:text-gray-600 cursor-not-allowed':
+                isPrevPageButtonDisabled,
             }"
             :disabled="isPrevPageButtonDisabled"
             @click="onClickPrevPageButton"
@@ -77,7 +80,8 @@
             class="py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white"
             :class="{
               'dark:hover:bg-gray-700': !isNextPageButtonDisabled,
-              'dark:bg-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-600 dark:text-gray-600 cursor-not-allowed': isNextPageButtonDisabled
+              'dark:bg-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-600 dark:text-gray-600 cursor-not-allowed':
+                isNextPageButtonDisabled,
             }"
             :disabled="isNextPageButtonDisabled"
             @click="onClickNextPageButton"
@@ -130,11 +134,11 @@ const visibleRows = computed(() => {
 
 const onClickNextPageButton = () => {
   currentPage.value = currentPage.value + 1;
-}
+};
 
 const onClickPrevPageButton = () => {
   currentPage.value = currentPage.value - 1;
-}
+};
 
 const isNextPageButtonDisabled = computed(() => currentPage.value === totalPages.value);
 const isPrevPageButtonDisabled = computed(() => currentPage.value === 1);

@@ -10,7 +10,12 @@
           <h2 class="text-gray-500">All tables</h2>
           <ul class="list-none mt-4">
             <li v-for="table in TABLES">
-              <a href="#" class="text-sm text-white bg-gray-800 px-2 py-1.5 rounded" @click="onClickTable(table)">{{ table.name }}</a>
+              <a
+                href="#"
+                class="text-sm text-white bg-gray-800 px-2 py-1.5 rounded"
+                @click="onClickTable(table)"
+                >{{ table.name }}</a
+              >
             </li>
           </ul>
         </div>
@@ -42,9 +47,9 @@ import { useQueryTabStore } from './stores/queryTabStore';
 import { TAB_VIEW_QUERY, TAB_VIEW_RECENT, TAB_VIEW_SAVED } from './components/TabPanel/types';
 import ApiClient from './api/client';
 import { useRecentQueriesStore } from './stores/recentQueries';
-import {Table} from "./domain/types";
-import {useFormDialogStore} from "./stores/formDialog";
-import {storeToRefs} from "pinia";
+import { Table } from './domain/types';
+import { useFormDialogStore } from './stores/formDialog';
+import { storeToRefs } from 'pinia';
 
 const formDialogStore = useFormDialogStore();
 const queryTabStore = useQueryTabStore();
@@ -80,7 +85,7 @@ const runQuery = async (sql: string) => {
   queryTabStore.setQueryResults(data);
 
   queryTabStore.setIsRunning(false);
-}
+};
 
 const onRun = async (sql: string) => runQuery(sql);
 

@@ -1,8 +1,5 @@
 <template>
-  <div
-    role="button"
-    class="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40"
-  ></div>
+  <div role="button" class="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40"></div>
   <div
     tabindex="-1"
     class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full items-center justify-center flex"
