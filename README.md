@@ -3,14 +3,15 @@
 
 ## Overview 
 
-The aim of this project is to build a web app to run and visualize SQL queries from a browser.
+The aim of this project is to build a web app to run and visualize SQL queries from a browser. It currently supports exploring [datasette.io](https://datasette.io/) databases such as this [global power plants](https://global-power-plants.datasettes.com/global-power-plants/global-power-plants) database.
 
 [DEMO](https://vue3-sql-viewer.netlify.com)
 
 ## Technology stack
 
 - Vue3
+- Vite
+- TypeScript
 - TailwindCSS + Flowbite
 - Pinia
-- Vite
 - Monaco Editor
