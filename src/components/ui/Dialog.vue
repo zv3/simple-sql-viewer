@@ -1,10 +1,15 @@
 <template>
   <div
+    v-if="open"
+    role="button"
+    class="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40"
+  ></div>
+  <div
     tabindex="-1"
     class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full items-center justify-center flex"
     :class="{ hidden: !open }"
   >
-    <div v-if="open" class="relative p-4 w-full max-w-lg h-full md:h-auto">
+    <div v-if="open" class="relative p-4 w-full max-w-2xl h-full md:h-auto">
       <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
         <header
           class="flex justify-between items-start p-4 pl-6 rounded-t border-b dark:border-gray-600"
