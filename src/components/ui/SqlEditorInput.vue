@@ -29,6 +29,7 @@ const editorOptions = {
   vertical: 'visible',
   verticalHasArrows: true,
   verticalScrollbarSize: 17,
+  lineNumbers: 'off',
 };
 
 const props = defineProps<Props>();
