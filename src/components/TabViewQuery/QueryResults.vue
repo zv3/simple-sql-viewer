@@ -118,7 +118,7 @@ const pagination = computed(() => {
 
   return {
     from: startIndex + 1,
-    to: endIndex,
+    to: Math.min(endIndex, totalRowsCount.value),
     startIndex,
     endIndex,
   };
