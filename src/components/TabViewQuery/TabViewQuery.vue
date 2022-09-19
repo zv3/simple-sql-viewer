@@ -45,7 +45,6 @@ const formDialogStore = useFormDialogStore();
 
 const { editorContents } = storeToRefs(queryTabStore);
 
-const editorInput = ref('');
 const isLoadingQuery = ref(false);
 const rows = ref([]);
 
@@ -53,7 +52,7 @@ const onClickSaveButton = () => {
   formDialogStore.setQueryModel({
     name: '',
     description: '',
-    sql: editorInput.value,
+    sql: editorContents.value,
     createdAt: Date.now(),
   });
 
@@ -63,7 +62,7 @@ const onClickSaveButton = () => {
 const onClickRunButton = () => {};
 
 const onClickClearButton = () => {
-  editorInput.value = '';
+  queryTabStore.setEditorContents('');
 };
 
 const onInputEditor = (sql: string) => {
