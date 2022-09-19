@@ -1,4 +1,4 @@
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/zv3/vue3-sql-viewer)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/zv3/simple-sql-viewer)
 # Simple SQL Viewer
 
 ## Overview 
