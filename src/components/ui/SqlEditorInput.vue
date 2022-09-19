@@ -1,53 +1,36 @@
 <template>
-  <div ref="editorRef" class="h-28"></div>
+  <monaco-editor
+    :value="props.value"
+    theme="vs-dark"
+    language="sql"
+    :options="editorOptions"
+    :width="800"
+    :height="100"
+    @change="onChange"
+  />
 </template>
 
 <script setup lang="ts">
-import * as monaco from 'monaco-editor';
-import {ref, onMounted, onBeforeUnmount, watch} from 'vue';
-
-const editorRef = ref(document.createElement('div'));
-let editorInstance: monaco.editor.IStandaloneCodeEditor;
+import MonacoEditor from 'monaco-editor-vue3';
+import {defineEmits} from "vue";
 
 interface Props {
-  modelValue: string;
+  value: string;
 }
-
-const props = defineProps<Props>();
 
 interface Emits {
-  (e: 'update:modelValue', val: string): void;
+  (e: 'input', val: string | null): void;
 }
 
-const emits = defineEmits<Emits>();
-
-const emitInput = () => {
-  const currentValue = editorInstance.getValue();
-
-  emits('update:modelValue', currentValue);
+const editorOptions = {
+  automaticLayout: true,
+  minimap: { enabled: false },
 };
 
-onMounted(() => {
-  editorInstance = monaco.editor.create(editorRef.value, {
-    value: props.modelValue,
-    language: 'sql',
-    automaticLayout: true,
-    minimap: { enabled: false },
-    theme: 'vs-dark',
-  });
+const props = defineProps<Props>();
+const emit = defineEmits<Emits>();
 
-  editorInstance.onDidChangeModelContent(emitInput);
-
-  emitInput();
-});
-
-onBeforeUnmount(() => {
-  editorInstance.dispose();
-});
-
-watch(() => props.modelValue, (newVal, oldVal) => {
-  if (newVal === '') {
-    editorInstance.setValue(''); // Manually clear the editor's input.
-  }
-});
+const onChange = (data: string) => {
+  emit('input', data);
+}
 </script>

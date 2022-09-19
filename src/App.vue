@@ -14,7 +14,7 @@
         <div class="my-8">
           <TabPanel v-model:tab-id="currentTabId" />
 
-          <component :is="mainTabViewComponent" />
+          <component :is="mainTabViewComponent" @run="onRun" />
         </div>
       </div>
     </div>
@@ -29,8 +29,10 @@ import TabPanel from './components/TabPanel/TabPanel.vue';
 import TabViewQuery from './components/TabViewQuery/TabViewQuery.vue';
 import TabViewSaved from './components/TabViewSaved/TabViewSaved.vue';
 import TabViewRecent from './components/TabViewRecent/TabViewRecent.vue';
+import { useQueryTabStore } from './stores/queryTabStore';
 import { TAB_VIEW_QUERY, TAB_VIEW_RECENT, TAB_VIEW_SAVED } from './components/TabPanel/types';
 
+const queryTabStore = useQueryTabStore();
 const currentTabId = ref(TAB_VIEW_QUERY.id);
 
 const mainTabViewComponent = computed(() => {
@@ -44,6 +46,12 @@ const mainTabViewComponent = computed(() => {
       return TabViewQuery;
   }
 });
+
+const onRun = (sql: string) => {
+  currentTabId.value = TAB_VIEW_QUERY.id;
+
+  queryTabStore.setEditorContents(sql);
+};
 </script>
 
 <style scoped></style>
