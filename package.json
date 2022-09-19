@@ -1,5 +1,5 @@
 {
-  "name": "atlan-frontend-engineer-task",
+  "name": "simple-sql-viewer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -24,7 +24,6 @@
   "devDependencies": {
     "@types/lodash": "^4.14.185",
     "@types/md5": "^2.3.2",
-    "@types/papaparse": "^5.3.5",
     "@types/uuid": "^8.3.4",
     "@vitejs/plugin-vue": "^3.1.0",
     "autoprefixer": "^10.4.11",
