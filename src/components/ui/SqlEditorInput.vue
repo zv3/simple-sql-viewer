@@ -11,14 +11,14 @@
 
 <script setup lang="ts">
 import MonacoEditor from 'monaco-editor-vue3';
-import {defineEmits} from "vue";
+import { defineEmits } from 'vue';
 
 interface Props {
   value: string;
 }
 
 interface Emits {
-  (e: 'input', val: string | null): void;
+  (e: 'update:value', val: string | null): void;
 }
 
 const editorOptions = {
@@ -30,6 +30,6 @@ const props = defineProps<Props>();
 const emit = defineEmits<Emits>();
 
 const onChange = (data: string) => {
-  emit('input', data);
-}
+  emit('update:value', data);
+};
 </script>

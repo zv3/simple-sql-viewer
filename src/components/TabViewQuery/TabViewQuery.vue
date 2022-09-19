@@ -20,7 +20,9 @@
       <button
         type="button"
         class="py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        :class="{ 'bg-blue-400 dark:bg-blue-500 cursor-not-allowed dark:hover:bg-blue-500': isRunning }"
+        :class="{
+          'bg-blue-400 dark:bg-blue-500 cursor-not-allowed dark:hover:bg-blue-500': isRunning,
+        }"
         :disabled="isRunning"
         @click="onClickRunButton"
       >
@@ -30,19 +32,16 @@
     </div>
 
     <QueryResults :loading="isRunning" :rows="rows" />
-
-    <QueryFormDialog />
   </div>
 </template>
 
 <script setup lang="ts">
-import {computed, ref} from 'vue';
-import QueryFormDialog from '../QueryFormDialog/QueryFormDialog.vue';
+import { computed, ref } from 'vue';
 import SqlEditorInput from '../ui/SqlEditorInput.vue';
 import LoadingIcon from '../../assets/icons/loading.svg';
 import { useFormDialogStore } from '../../stores/formDialog';
-import {useQueryTabStore} from "../../stores/queryTabStore";
-import {storeToRefs} from "pinia";
+import { useQueryTabStore } from '../../stores/queryTabStore';
+import { storeToRefs } from 'pinia';
 
 interface Emits {
   (e: 'run', val: string): void;
@@ -82,5 +81,5 @@ const onClickClearButton = () => {
 
 const onInputEditor = (sql: string) => {
   queryTabStore.setEditorContents(sql);
-}
+};
 </script>

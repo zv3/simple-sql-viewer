@@ -20,11 +20,14 @@
     </div>
 
     <div class="my-8"></div>
+
+    <QueryFormDialog />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import QueryFormDialog from './components/QueryFormDialog/QueryFormDialog.vue';
 import TabPanel from './components/TabPanel/TabPanel.vue';
 import TabViewQuery from './components/TabViewQuery/TabViewQuery.vue';
 import TabViewSaved from './components/TabViewSaved/TabViewSaved.vue';

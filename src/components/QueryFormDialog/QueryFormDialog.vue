@@ -33,7 +33,7 @@
           <label for="query" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >Query</label
           >
-          <SqlEditorInput v-model="localModel.sql" />
+          <SqlEditorInput v-model:value="localModel.sql" />
         </div>
       </form>
     </template>

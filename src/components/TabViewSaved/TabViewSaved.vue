@@ -45,6 +45,14 @@
             <button
               type="button"
               class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-3 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              @click="onClickEditButton(query)"
+            >
+              Edit
+            </button>
+
+            <button
+              type="button"
+              class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-3 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               @click="onClickRunButton(query)"
             >
               Run
@@ -62,8 +70,10 @@ import { useSavedQueriesStore } from '../../stores/SavedQueries';
 import { SavedQuery } from '../../domain/types';
 import { computed, defineEmits, ref } from 'vue';
 import { SortDirection } from './types';
+import { useFormDialogStore } from '../../stores/formDialog';
 
-const store = useSavedQueriesStore();
+const savedQueriesStore = useSavedQueriesStore();
+const formDialogStore = useFormDialogStore();
 
 interface Emits {
   (e: 'run', val: string): void;
@@ -77,12 +87,17 @@ const onClickRunButton = (query: SavedQuery) => {
   emits('run', query.sql);
 };
 
+const onClickEditButton = (query: SavedQuery) => {
+  formDialogStore.setQueryModel(query);
+  formDialogStore.setVisibility(true);
+};
+
 const onClickSortByButton = (direction: SortDirection) => {
   currentSortDirection.value =
     currentSortDirection.value === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC;
 };
 
 const queries = computed(() => {
-  return orderBy(store.queries, 'name', currentSortDirection.value);
+  return orderBy(savedQueriesStore.queries, 'name', currentSortDirection.value);
 });
 </script>
