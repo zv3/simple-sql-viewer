@@ -52,5 +52,3 @@ const isTabActive = (tab: TabViewOption) => {
   return tab.id === props.tabId;
 };
 </script>
-
-<style lang="postcss" scoped></style>

@@ -5,5 +5,3 @@ export default {
   name: 'RecentQueryRow',
 };
 </script>
-
-<style scoped></style>

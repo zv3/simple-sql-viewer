@@ -139,5 +139,3 @@ const onClickPrevPageButton = () => {
 const isNextPageButtonDisabled = computed(() => currentPage.value === totalPages.value);
 const isPrevPageButtonDisabled = computed(() => currentPage.value === 1);
 </script>
-
-<style scoped></style>

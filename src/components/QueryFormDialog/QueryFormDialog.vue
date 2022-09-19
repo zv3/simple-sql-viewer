@@ -1,5 +1,5 @@
 <template>
-  <Dialog :title="dialogTitle" :open="isVisible" @close="onClickCancelButton">
+  <Dialog :title="dialogTitle" @close="onClickCancelButton">
     <template #main>
       <form class="space-y-6" action="#">
         <div>

@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <QueryFormDialog />
+    <QueryFormDialog v-if="isFormDialogVisible" />
   </div>
 </template>
 
@@ -43,10 +43,15 @@ import { TAB_VIEW_QUERY, TAB_VIEW_RECENT, TAB_VIEW_SAVED } from './components/Ta
 import ApiClient from './api/client';
 import { useRecentQueriesStore } from './stores/recentQueries';
 import {Table} from "./domain/types";
+import {useFormDialogStore} from "./stores/formDialog";
+import {storeToRefs} from "pinia";
 
+const formDialogStore = useFormDialogStore();
 const queryTabStore = useQueryTabStore();
 const recentQueriesStore = useRecentQueriesStore();
+
 const currentTabId = ref(TAB_VIEW_QUERY.id);
+const { isVisible: isFormDialogVisible } = storeToRefs(formDialogStore);
 
 const mainTabViewComponent = computed(() => {
   switch (currentTabId.value) {
@@ -63,6 +68,10 @@ const mainTabViewComponent = computed(() => {
 const runQuery = async (sql: string) => {
   recentQueriesStore.saveQuery(sql);
 
+  // Running a query from the `Saved` tab should switch to the `Query` tab
+  // and set the editor's contents to the SQL statement that's being run.
+  currentTabId.value = TAB_VIEW_QUERY.id;
+
   queryTabStore.setEditorContents(sql);
   queryTabStore.setIsRunning(true);
 
@@ -73,18 +82,7 @@ const runQuery = async (sql: string) => {
   queryTabStore.setIsRunning(false);
 }
 
-const onRun = async (sql: string) => {
-  currentTabId.value = TAB_VIEW_QUERY.id;
+const onRun = async (sql: string) => runQuery(sql);
 
-  return runQuery(sql);
-};
-
-const onClickTable = (table: Table) => {
-  queryTabStore.setCurrentTable(table);
-  currentTabId.value = TAB_VIEW_QUERY.id;
-
-  return runQuery(table.sql);
-}
+const onClickTable = (table: Table) => runQuery(table.sql);
 </script>
-
-<style scoped></style>
