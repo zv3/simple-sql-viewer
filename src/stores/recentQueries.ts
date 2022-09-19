@@ -1,14 +1,13 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import md5 from 'md5';
-import {RecentQuery} from '../domain/types';
+import { RecentQuery } from '../domain/types';
 
 export const useRecentQueriesStore = defineStore('queries.recent', () => {
   const rawExistingQueries = window.localStorage.getItem('recentQueries');
   const recentQueries: RecentQuery[] = rawExistingQueries ? JSON.parse(rawExistingQueries) : [];
 
   const queries = ref<RecentQuery[]>([...recentQueries]);
-
 
   function saveQuery(sql: string) {
     const query: RecentQuery = {

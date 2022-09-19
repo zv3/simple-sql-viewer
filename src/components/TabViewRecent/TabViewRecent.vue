@@ -53,8 +53,8 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import SortIcon from '../../assets/icons/sort.svg';
 import { computed, defineEmits, ref } from 'vue';
 import { SortDirection } from '../TabViewSaved/types';
-import {useRecentQueriesStore} from "../../stores/recentQueries";
-import {RecentQuery} from "../../domain/types";
+import { useRecentQueriesStore } from '../../stores/recentQueries';
+import { RecentQuery } from '../../domain/types';
 
 dayjs.extend(relativeTime);
 
