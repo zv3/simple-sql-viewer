@@ -1,8 +1,10 @@
 <template>
   <div class="container mx-w-full h-full">
     <div class="flex h-full">
-      <div class="flex-0 w-3/12 border-r border-gray-800 mr-2">
-        <h1 class="text-blue-300 border-b border-gray-800 px-4 text-2xl py-2">SQL Viewer</h1>
+      <div class="flex-0 w-3/12 border-r border-gray-800">
+        <div class="h-12 flex items-center px-4 border-b border-gray-800">
+          <h1 class="text-blue-300 text-2xl">SQL Viewer</h1>
+        </div>
 
         <div class="px-4 mt-2">
           <h2 class="text-gray-500">All tables</h2>
@@ -15,10 +17,11 @@
       </div>
 
       <div class="flex-auto w-9/12">
-        <div class="mt-4 pb-8">
+        <div class="border-b border-gray-800 px-4 text-2xl h-12"></div>
+        <div class="pb-8">
           <TabPanel v-model:tab-id="currentTabId" />
 
-          <component :is="mainTabViewComponent" @run="onRun" />
+          <component :is="mainTabViewComponent" @run="onRun" class="mt-6 pl-2" />
         </div>
       </div>
     </div>

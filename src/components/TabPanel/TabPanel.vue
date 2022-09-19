@@ -2,7 +2,7 @@
   <div class="flex items-center mb-1">
     <div class="flex-auto">
       <ul
-        class="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400"
+        class="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 border-b border-gray-800"
         aria-label="Tabs"
         role="tablist"
       >
@@ -12,7 +12,7 @@
             type="button"
             class="py-3 px-4 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
             :class="{
-              'text-blue-500 dark:hover:text-blue-500 dark:hover:bg-transparent pointer-events-none':
+              'text-white dark:hover:text-blue-500 dark:hover:bg-transparent pointer-events-none':
                 isTabActive(tab),
             }"
             role="tab"
@@ -22,10 +22,6 @@
           </button>
         </li>
       </ul>
-    </div>
-
-    <div class="flex-0">
-      <div id="tab-panel-right"></div>
     </div>
   </div>
 </template>

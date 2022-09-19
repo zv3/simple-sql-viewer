@@ -4,7 +4,7 @@
     theme="vs-dark"
     language="sql"
     :options="editorOptions"
-    :height="100"
+    :height="150"
     @change="onChange"
   />
 </template>
