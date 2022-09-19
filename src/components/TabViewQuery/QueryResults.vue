@@ -26,7 +26,7 @@
               </th>
 
               <template v-for="(_, colIndex) in queryResults.columns">
-                <td v-if="colIndex > 0" :key="colIndex"  class="py-4 px-6">
+                <td v-if="colIndex > 0" :key="colIndex" class="py-4 px-6">
                   {{ row[colIndex] || '--' }}
                 </td>
               </template>
@@ -51,8 +51,8 @@
 </template>
 
 <script setup lang="ts">
-import {useQueryTabStore} from "../../stores/queryTabStore";
-import {storeToRefs} from "pinia";
+import { useQueryTabStore } from '../../stores/queryTabStore';
+import { storeToRefs } from 'pinia';
 
 const queryTabStore = useQueryTabStore();
 const { queryResults } = storeToRefs(queryTabStore);

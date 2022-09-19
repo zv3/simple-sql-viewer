@@ -14,6 +14,6 @@ export interface SavedQuery {
 
 export interface RecentQuery {
   id: string;
-  value: string;
-  createdAt: number;
+  sql: string;
+  lastRanAt: number;
 }

@@ -35,8 +35,10 @@ import TabViewRecent from './components/TabViewRecent/TabViewRecent.vue';
 import { useQueryTabStore } from './stores/queryTabStore';
 import { TAB_VIEW_QUERY, TAB_VIEW_RECENT, TAB_VIEW_SAVED } from './components/TabPanel/types';
 import ApiClient from './api/client';
+import { useRecentQueriesStore } from './stores/recentQueries';
 
 const queryTabStore = useQueryTabStore();
+const recentQueriesStore = useRecentQueriesStore();
 const currentTabId = ref(TAB_VIEW_QUERY.id);
 
 const mainTabViewComponent = computed(() => {
@@ -53,6 +55,8 @@ const mainTabViewComponent = computed(() => {
 
 const onRun = async (sql: string) => {
   currentTabId.value = TAB_VIEW_QUERY.id;
+
+  recentQueriesStore.saveQuery(sql);
 
   queryTabStore.setEditorContents(sql);
   queryTabStore.setIsRunning(true);

@@ -12,8 +12,10 @@
   "dependencies": {
     "@jobinsjp/vue3-datatable": "^1.0.15",
     "@tailwindcss/typography": "^0.5.7",
+    "dayjs": "^1.11.5",
     "flowbite": "^1.5.3",
     "lodash": "^4.17.21",
+    "md5": "^2.3.0",
     "monaco-editor-vue3": "^0.1.6",
     "pinia": "^2.0.22",
     "uuid": "^9.0.0",
