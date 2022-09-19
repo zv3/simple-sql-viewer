@@ -1,6 +1,6 @@
 <template>
   <monaco-editor
-    :value="props.value"
+    :value="props.modelValue"
     theme="vs-dark"
     language="sql"
     :options="editorOptions"
@@ -14,22 +14,27 @@ import MonacoEditor from 'monaco-editor-vue3';
 import { defineEmits } from 'vue';
 
 interface Props {
-  value: string;
+  modelValue: string;
 }
 
 interface Emits {
-  (e: 'update:value', val: string | null): void;
+  (e: 'update:modelValue', val: string | null): void;
 }
 
 const editorOptions = {
   automaticLayout: true,
   minimap: { enabled: false },
+  wordWrap: 'wordWrapColumn',
+  wordWrapColumn: 100,
+  vertical: 'visible',
+  verticalHasArrows: true,
+  verticalScrollbarSize: 17,
 };
 
 const props = defineProps<Props>();
 const emit = defineEmits<Emits>();
 
 const onChange = (data: string) => {
-  emit('update:value', data);
+  emit('update:modelValue', data);
 };
 </script>

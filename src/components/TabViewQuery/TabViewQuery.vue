@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SqlEditorInput :value="editorContents" @input="onInputEditor" />
+    <SqlEditorInput :value="editorContents" @update:value="onInputEditor" />
 
     <div class="text-right mt-2">
       <button
@@ -31,12 +31,15 @@
       </button>
     </div>
 
-    <QueryResults :loading="isRunning" :rows="rows" />
+    <div class="mt-14">
+      <QueryResults :loading="isRunning" :rows="rows" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import QueryResults from './QueryResults.vue';
 import SqlEditorInput from '../ui/SqlEditorInput.vue';
 import LoadingIcon from '../../assets/icons/loading.svg';
 import { useFormDialogStore } from '../../stores/formDialog';

@@ -1,4 +1,4 @@
-export interface QueryResult {
+export interface QueryResults {
   columns: string[];
   rows: string[];
   affected?: number;
