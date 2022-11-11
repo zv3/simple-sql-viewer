@@ -57,7 +57,7 @@
 <script setup lang="ts">
 import orderBy from 'lodash/orderBy';
 import SortIcon from '../../assets/icons/sort.svg';
-import { useSavedQueriesStore } from '../../stores/SavedQueries';
+import { useSavedQueriesStore } from '../../stores/savedQueries';
 import { SavedQuery } from '../../domain/types';
 import { computed, defineEmits, ref } from 'vue';
 import { SortDirection } from './types';
